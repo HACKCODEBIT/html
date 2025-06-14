@@ -1,0 +1,11 @@
+strong {
+  color: red;
+}
+#Punto_0{
+color: #000;;
+
+}
+div.menu-bar li:hover > ul {
+  display: block;
+  
+}

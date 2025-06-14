@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Página Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #444;
+      color: white;
+      padding: 10px;
+      width: 200px;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      height: 100%;
+      overflow-y: auto;
+      transition: transform 0.3s ease;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav li {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    nav li:hover {
+      background-color: #555;
+    }
+
+    .menu-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .menu-hidden {
+      transform: translateX(-220px);
+    }
+
+    .content {
+      margin-left: 220px;
+      padding: 20px;
+    }
+
+    section {
+      padding: 50px 20px;
+      min-height: 100vh;
+      scroll-margin-top: 80px;
+    }
+
+    #inicio { background-color: #f44336; }
+    #libros { background-color: #4CAF50; }
+    #citas { background-color: #2196F3; }
+    #media  { background-color: #FFC107; }
+
+    @media (max-width: 768px) {
+      nav {
+        transform: translateX(-220px);
+        z-index: 1;
+      }
+
+      .menu-hidden {
+        transform: translateX(0);
+      }
+
+      .content {
+        margin-left: 0;
+        padding-top: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <header>
+    <h1>Mi Página Web</h1>
+  </header>
+
+  <nav id="sideMenu" class="menu-hidden">
+    <ul>
+      <li onclick="scrollToSection('inicio')">Inicio</li>
+      <li onclick="scrollToSection('libros')">Ver libros</li>
+      <li onclick="scrollToSection('citas')">Agendar cita</li>
+      <li onclick="scrollToSection('media')">Imágenes y Videos</li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <section id="inicio">
+      <h2>Inicio</h2>
+      <p>Bienvenido a esta página. Aquí puedes navegar entre diferentes secciones.</p>
+    </section>
+
+    <section id="libros">
+      <h2>Ver libros</h2>
+      <p>Aquí puedes agregar información sobre libros, recomendaciones, o enlaces.</p>
+    </section>
+
+    <section id="citas">
+      <h2>Agendar cita</h2>
+      <p>Espacio para formularios o información para agendar una cita.</p>
+    </section>
+
+    <section id="media">
+      <h2>Imágenes y Videos</h2>
+      <p>Texto descriptivo sobre contenido multimedia.</p>
+      <img src="https://via.placeholder.com/400x200" alt="Imagen de ejemplo" style="max-width: 100%;">
+      <br><br>
+      <video width="100%" controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+      </video>
+    </section>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      menu.classList.toggle("menu-hidden");
+    }
+
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+      if (window.innerWidth < 768) toggleMenu(); // Ocultar menú en móviles tras click
+    }
+  </script>
+</body>
+</html>
